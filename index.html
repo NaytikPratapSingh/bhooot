@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>👻 ANSHIKA KA BHOOT 👻</title>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=Nosifer&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --blood: #8B0000; --dark: #0a0005; --ghost: #c8ffc8; --yellow: #ffe44d; }
+  body { background: var(--dark); color: #eee; font-family: 'Special Elite', serif; overflow-x: hidden; min-height: 100vh; }
+  .blood-bar { position: fixed; top: 0; left: 0; width: 100%; height: 56px; background: var(--blood); z-index: 100; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .blood-bar::after { content: ''; position: absolute; bottom: -30px; left: 0; width: 100%; height: 35px; background: radial-gradient(ellipse 18px 30px at 10% 0%, var(--blood) 70%, transparent 71%), radial-gradient(ellipse 15px 25px at 25% 0%, var(--blood) 70%, transparent 71%), radial-gradient(ellipse 20px 32px at 42% 0%, var(--blood) 70%, transparent 71%), radial-gradient(ellipse 12px 20px at 58% 0%, var(--blood) 70%, transparent 71%), radial-gradient(ellipse 18px 28px at 72% 0%, var(--blood) 70%, transparent 71%), radial-gradient(ellipse 14px 22px at 87% 0%, var(--blood) 70%, transparent 71%), radial-gradient(ellipse 16px 26px at 96% 0%, var(--blood) 70%, transparent 71%); pointer-events: none; }
+  .blood-title { font-family: 'Nosifer', cursive; font-size: clamp(13px, 3.5vw, 20px); color: #fff; text-shadow: 0 0 10px #ff0000; letter-spacing: 2px; z-index: 1; animation: flicker 1.5s infinite; }
+  @keyframes flicker { 0%, 100% { opacity: 1; } 92% { opacity: 1; } 93% { opacity: 0.2; } 94% { opacity: 1; } 96% { opacity: 0.4; } 97% { opacity: 1; } }
+  .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+  .star { position: absolute; animation: float-ghost linear infinite; }
+  @keyframes float-ghost { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-50px) rotate(360deg); opacity: 0; } }
+  .container { position: relative; z-index: 10; padding: 76px 16px 40px; max-width: 600px; margin: 0 auto; }
+  .hero { text-align: center; padding: 28px 20px 20px; background: linear-gradient(180deg, rgba(139,0,0,0.15) 0%, transparent 100%); border: 1px solid rgba(139,0,0,0.4); border-radius: 12px; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .anshika-name { font-family: 'Nosifer', cursive; font-size: clamp(30px, 10vw, 58px); background: linear-gradient(135deg, #ff2200, #ff8800, #ff2200); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: pulse-name 2s ease-in-out infinite; display: block; margin-bottom: 4px; }
+  .bhoot-text { font-family: 'Nosifer', cursive; font-size: clamp(26px, 8vw, 48px); color: var(--ghost); text-shadow: 0 0 20px #00ff00, 0 0 40px #00aa00; animation: shake 0.5s ease-in-out infinite alternate; display: block; }
+  @keyframes pulse-name { 0%, 100% { filter: drop-shadow(0 0 6px #ff2200); } 50% { filter: drop-shadow(0 0 20px #ff8800) drop-shadow(0 0 40px #ff2200); } }
+  @keyframes shake { 0% { transform: rotate(-2deg) translateX(-3px); } 100% { transform: rotate(2deg) translateX(3px); } }
+  .subtitle { font-family: 'Creepster', cursive; font-size: clamp(13px, 4vw, 17px); color: #aaa; margin-top: 10px; }
+
+  /* PHOTO SECTION */
+  .photo-section { margin-bottom: 24px; }
+  .photo-section-title { font-family: 'Nosifer', cursive; font-size: clamp(15px, 5vw, 22px); color: var(--ghost); text-shadow: 0 0 10px #00ff00; text-align: center; margin-bottom: 16px; animation: flicker 2s infinite; }
+  .photos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .photo-card { position: relative; border-radius: 12px; overflow: hidden; border: 2px solid rgba(139,0,0,0.6); cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; animation: border-pulse 3s ease-in-out infinite; }
+  .photo-card:nth-child(2) { animation-delay: 1.5s; }
+  .photo-card:hover { transform: scale(1.03) rotate(-1deg); box-shadow: 0 0 30px rgba(255,0,0,0.6); }
+  @keyframes border-pulse { 0%, 100% { border-color: rgba(139,0,0,0.6); box-shadow: 0 0 8px rgba(139,0,0,0.3); } 50% { border-color: rgba(255,0,0,0.9); box-shadow: 0 0 20px rgba(255,0,0,0.5); } }
+  .photo-card img { width: 100%; height: 220px; object-fit: cover; object-position: top; display: block; filter: sepia(0.3) contrast(1.1); transition: filter 0.3s; }
+  .photo-card:hover img { filter: sepia(0.6) contrast(1.3) hue-rotate(300deg); }
+  .photo-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.92)); padding: 28px 10px 10px; text-align: center; }
+  .photo-label { font-family: 'Nosifer', cursive; font-size: clamp(12px, 3.5vw, 16px); color: var(--ghost); text-shadow: 0 0 8px #00ff00; display: block; line-height: 1.4; }
+  .photo-sublabel { font-family: 'Creepster', cursive; font-size: clamp(11px, 3vw, 14px); color: #ff4444; display: block; margin-top: 3px; animation: flicker 1.5s infinite; }
+  .ghost-tag { position: absolute; top: 8px; right: 8px; font-size: 24px; animation: bob 2s ease-in-out infinite; filter: drop-shadow(0 0 6px #00ff00); }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+  /* Big reveal card */
+  .reveal-card { background: rgba(0,20,0,0.5); border: 2px solid rgba(0,200,0,0.4); border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: center; animation: border-pulse-green 2s infinite; }
+  @keyframes border-pulse-green { 0%, 100% { border-color: rgba(0,200,0,0.3); box-shadow: 0 0 5px rgba(0,200,0,0.2); } 50% { border-color: rgba(0,255,0,0.7); box-shadow: 0 0 20px rgba(0,255,0,0.4); } }
+  .reveal-card .big-ghost { font-size: 70px; display: block; animation: ghost-float 3s ease-in-out infinite; margin: 8px 0; }
+  @keyframes ghost-float { 0%, 100% { transform: translateY(0) rotate(-5deg); filter: drop-shadow(0 0 10px #00ff00); } 50% { transform: translateY(-12px) rotate(5deg); filter: drop-shadow(0 0 25px #00ff00); } }
+  .reveal-card h2 { font-family: 'Nosifer', cursive; font-size: clamp(16px, 5vw, 22px); color: var(--ghost); text-shadow: 0 0 10px #00ff00; margin-bottom: 12px; }
+  .reveal-card p { font-size: 14px; color: #ccc; line-height: 1.8; }
+
+  .warning-box { background: rgba(139,0,0,0.2); border: 2px solid var(--blood); border-radius: 8px; padding: 16px; margin-bottom: 20px; text-align: center; animation: border-pulse 2s ease-in-out infinite; }
+  .warning-box h3 { font-family: 'Creepster', cursive; font-size: 18px; color: #ff4444; margin-bottom: 8px; }
+  .warning-box p { font-size: 13px; color: #ccc; line-height: 1.6; }
+  .cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+  .card { background: rgba(20,5,20,0.9); border: 1px solid rgba(139,0,0,0.5); border-radius: 12px; padding: 18px; position: relative; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; overflow: hidden; }
+  .card:hover { transform: scale(1.02) rotate(-0.5deg); box-shadow: 0 0 25px rgba(255,0,0,0.4); border-color: #ff0000; }
+  .card-emoji { font-size: 36px; display: block; margin-bottom: 10px; animation: bob 2s ease-in-out infinite; }
+  .card-title { font-family: 'Creepster', cursive; font-size: 20px; color: var(--ghost); margin-bottom: 8px; }
+  .card-body { font-size: 13px; color: #bbb; line-height: 1.7; }
+  .anshika-highlight { color: #ff4444; font-weight: bold; text-shadow: 0 0 6px #ff0000; }
+  .scare-btn { display: block; width: 100%; padding: 16px; background: var(--blood); color: white; border: none; border-radius: 10px; font-family: 'Nosifer', cursive; font-size: 18px; cursor: pointer; text-align: center; margin: 20px 0; transition: all 0.2s; animation: btn-pulse 2s ease-in-out infinite; }
+  @keyframes btn-pulse { 0%, 100% { box-shadow: 0 0 20px rgba(255,0,0,0.3); } 50% { box-shadow: 0 0 40px rgba(255,0,0,0.7); } }
+  .scare-btn:hover { background: #ff0000; transform: scale(1.03); }
+  .scare-popup { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+  .scare-popup.active { display: flex; animation: popup-in 0.1s ease-out; }
+  @keyframes popup-in { 0% { opacity: 0; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+  .popup-photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; object-position: top; border: 3px solid #00ff00; box-shadow: 0 0 30px #00ff00, 0 0 60px rgba(0,255,0,0.4); animation: jump-scare 0.4s ease-out, ghost-glow 2s ease-in-out infinite 0.5s; filter: sepia(0.5) hue-rotate(280deg) contrast(1.2); margin-bottom: 16px; }
+  @keyframes jump-scare { 0% { transform: scale(0) rotate(-30deg); } 70% { transform: scale(1.2) rotate(5deg); } 100% { transform: scale(1) rotate(0deg); } }
+  @keyframes ghost-glow { 0%, 100% { box-shadow: 0 0 20px #00ff00; } 50% { box-shadow: 0 0 50px #00ff00, 0 0 80px rgba(0,255,0,0.6); } }
+  .scare-popup h2 { font-family: 'Nosifer', cursive; font-size: clamp(18px, 6vw, 32px); color: #ff2200; text-shadow: 0 0 20px #ff0000; margin-bottom: 12px; animation: flicker 0.5s infinite; }
+  .scare-popup p { font-size: 15px; color: #aaa; max-width: 300px; line-height: 1.7; }
+  .close-popup { margin-top: 20px; padding: 12px 28px; background: transparent; border: 2px solid var(--ghost); color: var(--ghost); font-family: 'Creepster', cursive; font-size: 18px; border-radius: 8px; cursor: pointer; }
+  .scream-text { font-family: 'Creepster', cursive; font-size: clamp(15px, 5vw, 20px); color: var(--yellow); text-align: center; animation: scream 1s ease-in-out infinite alternate; display: block; margin: 12px 0; }
+  @keyframes scream { 0% { letter-spacing: 2px; } 100% { letter-spacing: 5px; } }
+  .eyes { position: fixed; bottom: 20px; right: 16px; font-size: 28px; opacity: 0.4; z-index: 5; animation: blink-eyes 4s ease-in-out infinite; }
+  @keyframes blink-eyes { 0%, 95%, 100% { opacity: 0.4; } 97% { opacity: 0; } }
+  #typing-msg { font-family: 'Special Elite', serif; font-size: 13px; color: var(--ghost); text-align: center; padding: 8px; min-height: 22px; }
+  .footer { text-align: center; padding: 20px; border-top: 1px solid rgba(139,0,0,0.3); margin-top: 20px; }
+  .footer p { font-size: 12px; color: #666; line-height: 1.8; }
+  .footer .love { color: #ff2200; animation: flicker 2s infinite; }
+  .fact-list { list-style: none; margin: 10px 0; text-align: left; }
+  .fact-list li { padding: 7px 0; border-bottom: 1px solid rgba(139,0,0,0.2); font-size: 13px; color: #bbb; display: flex; gap: 8px; align-items: flex-start; }
+  .fact-list li::before { content: '💀'; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="eyes">👀</div>
+
+<div class="blood-bar">
+  <span class="blood-title">⚰️ ANSHIKA KA BHOOT ⚰️</span>
+</div>
+
+<!-- Scare Popup with photo -->
+
+  <img  src="12.jpeg" alt="Anshika Bhoot">
+  <h2>BOO! MAIN HOON ANSHIKA BHOOT!</h2>
+  <p>Tumhe dhundte dhundte<br><strong style="color:#c8ffc8;">ANSHIKA BHOOT</strong> aa gayi!<br>
+  Bhago mat... main tumhare saath rehna chahti hoon! 😂👻</p>
+  <button class="close-popup" onclick="document.getElementById('scarePopup').classList.remove('active')">BHAGO! 🏃‍♀️</button>
+
+
+<div class="container">
+
+  <div class="hero">
+    <span class="anshika-name">ANSHIKA</span>
+    <span class="bhoot-text">KA BHOOT</span>
+    <p class="subtitle">☠️ Main hoon ANSHIKA BHOOT — darr gaye? ☠️</p>
+  </div>
+
+  <div id="typing-msg"></div>
+
+  <!-- PHOTO SECTION -->
+  <div class="photo-section">
+    <p class="photo-section-title">👻 YEH HOON MAIN — ANSHIKA BHOOT 👻</p>
+    <div class="photos-grid">
+
+      <div class="photo-card" onclick="document.getElementById('scarePopup').classList.add('active')">
+        <span class="ghost-tag">👻</span>
+        <img src="data:image/jpeg;base64,IMG1_PLACEHOLDER" alt="Anshika Bhoot Photo 1">
+        <div class="photo-overlay">
+          <span class="photo-label">MAIN HOON</span>
+          <span class="photo-label">ANSHIKA BHOOT</span>
+          <span class="photo-sublabel">Darao mat... main kaampti hoon 😂</span>
+        </div>
+      </div>
+
+      <div class="photo-card" onclick="document.getElementById('scarePopup').classList.add('active')">
+        <span class="ghost-tag">💀</span>
+        <img src="data:image/jpeg;base64,IMG2_PLACEHOLDER" alt="Anshika Bhoot Photo 2">
+        <div class="photo-overlay">
+          <span class="photo-label">ANSHIKA BHOOT</span>
+          <span class="photo-label">RAAT KO</span>
+          <span class="photo-sublabel">3 baje ka look! 😈</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Reveal card -->
+  <div class="reveal-card">
+    <h2>👻 ANSHIKA BHOOT KA AITRAF 👻</h2>
+    <span class="big-ghost">👻</span>
+    <p>
+      "Main <strong style="color:#c8ffc8;">ANSHIKA BHOOT</strong> hoon!<br>
+      Main haunted haveli mein rehti hoon...<br>
+      woh haveli jisko log <em style="color:#ff4444;">'room'</em> kehte hain!<br><br>
+      Raat ko andhera dekh ke<br>
+      khud hi dar jaati hoon! 😂<br><br>
+      <em style="color:#aaffaa;">ANSHIKA BHOOT ki yahi kahani hai — <br>darta hai sab ko... khud bhi darti hai!</em>"
+    </p>
+  </div>
+
+  <div class="warning-box">
+    <h3>⚠️ KHATARNAK CHETAVNI ⚠️</h3>
+    <p>Yeh website <strong>ANSHIKA BHOOT</strong> ne khud banayi hai.<br>
+    Jo bhi isse dekhega...<br>
+    <strong style="color:#ff4444;">ANSHIKA BHOOT</strong> usse haunt karegi! 👻<br>
+    <em>(matlab WhatsApp pe text karti rehegi 😂)</em></p>
+  </div>
+
+  <button class="scare-btn" onclick="document.getElementById('scarePopup').classList.add('active')">
+    👻 ANSHIKA BHOOT SE MILO 👻
+  </button>
+
+  <div class="cards">
+    <div class="card">
+      <span class="card-emoji">🌙</span>
+      <div class="card-title">ANSHIKA BHOOT KI RAAT</div>
+      <div class="card-body">
+        Raat ke 3 baje <span class="anshika-highlight">ANSHIKA BHOOT</span> jaag jaati hai...<br>
+        darwaza kholti hai...<br>
+        <em style="color:#aaffaa;">...aur kitchen mein jaake kuch khaati hai! 😂</em><br>
+        Isliye log kehte hain raat ko awaazein aati hain!
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-emoji">🔮</span>
+      <div class="card-title">ANSHIKA BHOOT KI SUPER POWERS</div>
+      <div class="card-body">
+        <ul class="fact-list">
+          <li>ANSHIKA BHOOT sab ki secrets jaanti hai 👀</li>
+          <li>ANSHIKA BHOOT bina awaaz ke snacks kha sakti hai</li>
+          <li>ANSHIKA BHOOT ka ek stare sabko daraa deta hai</li>
+          <li>ANSHIKA BHOOT hamesha judge karti hai — silently 😂</li>
+          <li>ANSHIKA BHOOT khud bhi bhooton se darti hai!</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <span class="card-emoji">📖</span>
+      <div class="card-title">ANSHIKA BHOOT KI DIARY</div>
+      <div class="card-body">
+        <span class="anshika-highlight">ANSHIKA BHOOT</span> ki diary mein likha tha:<br>
+        <em style="color:#aaffaa;">"Aaj daraya kisi ko... woh bhaaga, main bhi bhaagi."</em><br>
+        <em style="color:#aaffaa;">"Bhoot hona bahut mushkil hai yaar."</em><br>
+        <em style="color:#aaffaa;">"Kal phir kisi ko daraaoongi... ya nahi bhi!"</em> 😂
+      </div>
+    </div>
+  </div>
+
+  <span class="scream-text">👻 MAIN HOON ANSHIKA BHOOT 👻</span>
+  <span class="scream-text" style="color:#ff4444; font-size: clamp(13px, 4vw, 17px);">Tum yahan safe nahi ho! 😈</span>
+
+  <div class="warning-box" style="margin-top: 16px;">
+    <h3 style="color: var(--ghost); text-shadow: 0 0 10px #00ff00;">💌 Sachchi Baat 💌</h3>
+    <p style="color: #ddd;">
+      <strong style="color: #ff4444;">ANSHIKA</strong> ko yeh website<br>
+      pyaar se dedicated hai! 😂<br>
+      <em style="color: var(--ghost);">Happy Haunting, Anshika BHOOT! 🖤👻</em>
+    </p>
+  </div>
+
+  <div class="footer">
+    <p>💀 <span class="love">ANSHIKA BHOOT PRODUCTIONS</span> 💀<br>
+    © 2024 | Bhoot ke paas copyright nahi hoti 😂<br>
+    <em>Share karo aur sabko darao! 👻</em></p>
+  </div>
+
+</div>
+
+<script>
+  const starContainer = document.getElementById('stars');
+  const ghosts = ['👻','💀','🕷️','🦇','👁️','🕯️'];
+  for(let i = 0; i < 15; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.textContent = ghosts[Math.floor(Math.random() * ghosts.length)];
+    s.style.left = Math.random() * 100 + '%';
+    s.style.animationDuration = (8 + Math.random() * 12) + 's';
+    s.style.animationDelay = (Math.random() * 15) + 's';
+    s.style.fontSize = (12 + Math.random() * 18) + 'px';
+    s.style.opacity = 0.2 + Math.random() * 0.3;
+    starContainer.appendChild(s);
+  }
+  const msgs = [
+    "Main hoon ANSHIKA BHOOT... tumhara wait kar rahi hoon...",
+    "Kya tum mujhse darrte ho? ANSHIKA BHOOT poochh rahi hai!",
+    "ANSHIKA BHOOT ne kaha: scroll karte raho... 👻",
+    "BOO! ANSHIKA BHOOT ne pakad liya! 👻",
+    "ANSHIKA + BHOOT = Bahut zyada drama! 😂",
+    "Yahan se mat jaao... main akeli hoon! 😭"
+  ];
+  let msgIdx = 0, charIdx = 0, typing = true;
+  const typingEl = document.getElementById('typing-msg');
+  function typeMessage() {
+    if(typing) {
+      if(charIdx < msgs[msgIdx].length) { typingEl.textContent = msgs[msgIdx].slice(0, ++charIdx); setTimeout(typeMessage, 50); }
+      else { typing = false; setTimeout(typeMessage, 2500); }
+    } else {
+      if(charIdx > 0) { typingEl.textContent = msgs[msgIdx].slice(0, --charIdx); setTimeout(typeMessage, 25); }
+      else { typing = true; msgIdx = (msgIdx + 1) % msgs.length; setTimeout(typeMessage, 400); }
+    }
+  }
+  typeMessage();
+</script>
+</body>
+</html>
